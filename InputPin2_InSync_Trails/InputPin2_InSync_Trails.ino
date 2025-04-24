@@ -42,8 +42,8 @@ void loop() {
     fadeToBlackBy(leds, NUM_LEDS, 64);
     fadeToBlackBy(leds2, NUM_LEDS, 64);
     fadeToBlackBy(leds3, NUM_LEDS, 64);
-    
-    // Add bright pixels at current positions (all strips use the same position)
+
+    // Define the colors of each strip
     leds[pos] = CRGB::Red;
     leds2[pos] = CRGB::Blue;
     leds3[pos] = CRGB::Green;
@@ -56,7 +56,7 @@ void loop() {
     // Show the updated LEDs
     FastLED.show();
     
-    // Move the position of the dot (all strips move together)
+    // Move the position
     pos = (pos + 4) % NUM_LEDS;
     
     Serial.print("Position: ");
@@ -64,12 +64,14 @@ void loop() {
     
     delay(20);
   } else {
-    if(pos > 0) {// Fade all LEDs slightly
+    // Continue the current loop at loss of signal.
+    if(pos > 0) {
+    // Fade all LEDs slightly
     fadeToBlackBy(leds, NUM_LEDS, 64);
     fadeToBlackBy(leds2, NUM_LEDS, 64);
     fadeToBlackBy(leds3, NUM_LEDS, 64);
     
-    // Add bright pixels at current positions (all strips use the same position)
+    
     leds[pos] = CRGB::Red;
     leds2[pos] = CRGB::Blue;
     leds3[pos] = CRGB::Green;
@@ -91,6 +93,7 @@ void loop() {
     delay(20);
     }
     else {
+      // End the looped display.
       FastLED.clear();
       FastLED.show();
       delay(100);
