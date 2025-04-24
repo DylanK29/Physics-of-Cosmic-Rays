@@ -27,8 +27,8 @@ void setup() {
   
   // Initialize positions with the staggered delays
   pos = 0;
-  pos2 = NUM_LEDS - STRIP2_DELAY;  // Start at a negative position (will wrap around)
-  pos3 = NUM_LEDS - STRIP3_DELAY;  // Start at a negative position (will wrap around)
+  pos2 = NUM_LEDS - STRIP2_DELAY;  // Start at a negative position
+  pos3 = NUM_LEDS - STRIP3_DELAY;  // Start at a negative position
 }
 
 void loop() {
@@ -51,7 +51,7 @@ void loop() {
   
   
   if (toggle) {
-    // Move all positions by 4 LEDs
+    // Move all positions by 5 LEDs
     pos = (pos + 5) % NUM_LEDS;
     pos2 = (pos2 + 5) % NUM_LEDS;
     pos3 = (pos3 + 5) % NUM_LEDS;
